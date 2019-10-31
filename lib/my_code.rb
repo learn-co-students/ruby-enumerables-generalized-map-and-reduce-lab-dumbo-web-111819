@@ -11,12 +11,9 @@ end
 
 
 def reduce(source_array, starting_point=0)
-  i=0
   sum=starting_point
-  while i < source_array.length
-    yield sum,source_array[i]
-    sum+=source_array[i]
-    i+=1
+  source_array.map do |item|
+    sum=yield(sum,item)
   end
   sum
 end
